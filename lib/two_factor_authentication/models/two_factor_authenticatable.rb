@@ -28,7 +28,7 @@ module Devise
         end
 
         def authenticate_direct_otp(code)
-          return false if direct_otp.nil? || direct_otp != code || direct_otp_expired?
+          return false if direct_otp.nil? || direct_otp != without_spaces(code) || direct_otp_expired?
           clear_direct_otp
           true
         end
